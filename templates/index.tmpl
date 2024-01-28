@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rolling Stone's top 500 API</title>
+
+	<!-- Bootstrap 5.3 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark text-light text-center mt-3 pt-3">
+
+	<h1 class="">RollingStone's</h1>
+	<h2 class="">The 500 Greatest Albums of All Time</h2>
+	<h3 class="">REST API</h3>
+
+	<div class="d-flex justify-content-center m-5 pt-5 flex- text-start flex-nowrap m-auto" style="max-width: 34rem;">
+		<div class="row bg-dark rounded p-4 text-success shadow text-start">
+			<p>// Get all albums on the list (2024)</br>
+			// The API call returns the list of albums</p>
+			<code>curl http://localhost:8080/getAlbumList</code>
+			<pre><code class="text-info">
+[
+	{
+		"position": 1,
+		"album": "What's Going On",
+		"artist": "Marvin Gaye",
+	},
+	...
+	{
+		"position": 500,
+		"album": "Funeral",
+		"artist": "Arcade Fire",
+	},
+]</code></pre>
+		</div>
+	</div>
+
+	<div class="d-flex justify-content-center m-5 pt-5 flex- text-start flex-nowrap m-auto" style="max-width: 34rem;">
+		<div class="row bg-dark rounded p-4 text-success shadow text-start">
+			<p>// Get a specific album in the list (2024) from it's position</br>
+			// The API call returns a single album</p>
+			<code>curl http://localhost:8080/getAlbumAtPosition/7</code>
+			<pre><code class="text-info">
+{
+	"position": 7,
+	"artist": "Fleetwood Mac",
+	"album": "Rumours"
+}</code></pre>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<footer class="py-3 my-4">
+		  <a href="https://github.com/fatchild/api-rolling-stones-top-500-albums" class="text-decoration-none text-light" target="_blank">
+			<p class="text-center text-body-light border-top pt-3">© 2024 Edward Oakley
+						<svg class="ms-3 me-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+							<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+						  </svg>
+						  Version: 0.0.1-alpha
+			</p>
+		  </a>
+		</footer>
+	  </div>
+	
+	<!-- Bootstrap 5.3 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+	</script>
+</body>
+
+</html>
