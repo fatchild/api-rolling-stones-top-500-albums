@@ -1,53 +1,35 @@
 # Rolling Stones Top 500 Albums API
 
-## Useful Articles
+> Get all albums on the list (2024)
+> The API call returns the list of albums
 
-- [RHEL - What is a REST API?](https://www.redhat.com/en/topics/api/what-is-a-rest-api)
-- [Creating Golang API with Gin Gonic and GCP Firebase (Part 1) - Go Tutorial](https://www.youtube.com/watch?v=UlZ_EGWvN7w&ab_channel=MarcioMarinho)
-- [Tutorial: Developing a RESTful API with Go and Gin](https://go.dev/doc/tutorial/web-service-gin)
-- [What are the types of APIs and their differences?](https://www.techtarget.com/searchapparchitecture/tip/What-are-the-types-of-APIs-and-their-differences)
+`curl http://localhost:8080/getAlbumList`
 
-## Goal
-
-Get information about the various versions of the RS top 500 album lists.
-
-1. Making a request such as `/getAlbumList?all=true&year=2024&listBy=position` would get you the full 2024 list of albums.
-
-2. Client receives the following;
-
-```js
-{
-    [
-        {
-            album: "What's Going On",
-            artist: "Marvin Gaye",
-        }, 
-        {
-            album: "Pet Sounds",
-            artist: "The Beach Boys",
-        }, 
-        ...
-        {
-            album: "Funeral",
-            artist: "Arcade Fire",
-        }, 
-        
-    ]
-}
+```json
+[
+	{
+		"position": 1,
+		"album": "What's Going On",
+		"artist": "Marvin Gaye",
+	},
+	...
+	{
+		"position": 500,
+		"album": "Funeral",
+		"artist": "Arcade Fire",
+	},
+]
 ```
 
-# Notes
+> Get a specific album in the list (2024) from it's position
+> The API call returns a single album
 
-## API TYPE
+`curl http://localhost:8080/getAlbumAtPosition/7`
 
-A public API which can be accesses through the public internet.
-
-## API Architecture & Protocol
-
-RESTful API is a Representational State Transfer API. Transferring the state of the program in a standardized format.
-
-- Stores no data between requests (stateless)
-- Mainly used for exchanging data
-- RPC (Remote Procedural Call) This is used for action invocation
-- SOAP (Simple Object Access Protocol) a tightly controlled standard
-
+```json
+{
+	"position": 7,
+	"artist": "Fleetwood Mac",
+	"album": "Rumours"
+}
+```
