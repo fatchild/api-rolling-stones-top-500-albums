@@ -12,7 +12,6 @@
 		"album": "What's Going On",
 		"artist": "Marvin Gaye",
 	},
-	...
 	{
 		"position": 500,
 		"album": "Funeral",
