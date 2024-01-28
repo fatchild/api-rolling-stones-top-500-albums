@@ -7,16 +7,16 @@
 
 ```json
 [
-	{
-		"position": 1,
-		"album": "What's Going On",
-		"artist": "Marvin Gaye",
-	},
-	{
-		"position": 500,
-		"album": "Funeral",
-		"artist": "Arcade Fire",
-	},
+{
+  "position": 1,
+  "album": "What's Going On",
+  "artist": "Marvin Gaye",
+},
+{
+  "position": 500,
+  "album": "Funeral",
+  "artist": "Arcade Fire",
+}
 ]
 ```
 
@@ -27,8 +27,8 @@
 
 ```json
 {
-	"position": 7,
-	"artist": "Fleetwood Mac",
-	"album": "Rumours"
+  "position": 7,
+  "artist": "Fleetwood Mac",
+  "album": "Rumours"
 }
 ```
