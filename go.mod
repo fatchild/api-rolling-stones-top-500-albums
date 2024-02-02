@@ -1,4 +1,4 @@
-module example/web-service-gin
+module github.com/fatchild/api-rolling-stones-top-500-albums
 
 go 1.21
 
