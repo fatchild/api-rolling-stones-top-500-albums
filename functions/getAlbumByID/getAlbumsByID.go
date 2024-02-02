@@ -1,38 +1,15 @@
 package getAlbumByID
 
 import (
-	"encoding/json"
-	"fmt"
-	"github.com/gin-gonic/gin"
-	"io/ioutil"
 	"net/http"
 	"strconv"
+
+	"github.com/fatchild/api-rolling-stones-top-500-albums/database"
+	"github.com/gin-gonic/gin"
 )
 
-type albums struct {
-	Position int    `json:"position"`
-	Artist   string `json:"artist"`
-	Album    string `json:"album"`
-}
-
-type albumsList []albums
-
-func parseAlbumsJSON() (obj albumsList) {
-	data, err := ioutil.ReadFile("./database/albums_2024.json")
-	if err != nil {
-		fmt.Print(err)
-	}
-
-	err = json.Unmarshal(data, &obj)
-	if err != nil {
-		fmt.Println("error:", err)
-	}
-
-	return obj
-}
-
 func GetAlbumByID(c *gin.Context) {
-	obj := parseAlbumsJSON()
+	obj := database.ParseAlbumsJSON()
 
 	idString := c.Param("position")
 

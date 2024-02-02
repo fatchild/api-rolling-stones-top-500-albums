@@ -1,10 +1,11 @@
 package router
 
 import (
+	"net/http"
+
 	"github.com/fatchild/api-rolling-stones-top-500-albums/functions/getAlbumByID"
 	"github.com/fatchild/api-rolling-stones-top-500-albums/functions/getAlbums"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func Router(version string, routingServiceURL string, port string) {

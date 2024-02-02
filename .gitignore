@@ -65,5 +65,8 @@ node_modules/
 # dotenv environment variables file
 .env
 
-# http access logs
-var/access.log
+# Anything in var and var itself should be ignored
+var
+
+# go.sum
+*.sum
