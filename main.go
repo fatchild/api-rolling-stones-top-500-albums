@@ -6,13 +6,14 @@ import (
 )
 
 const (
-	version			  = "0.0.1-alpha"
-	routingServiceURL = "http://localhost"
-	port              = "8080"
-	logToFile	      = true
+	version           = "0.0.1-alpha"
+	routingServiceURL = "localhost:"
+	port              = "8000"
+	logToFile         = true
+	releaseMode       = false
 )
 
 func main() {
 	logger.GinLog(logToFile)
-	router.Router(version, routingServiceURL, port)
+	router.Router(version, routingServiceURL, port, releaseMode)
 }

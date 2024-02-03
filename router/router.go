@@ -8,7 +8,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Router(version string, routingServiceURL string, port string) {
+func Router(version string, routingServiceURL string, port string, releaseMode bool) {
+	if releaseMode {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
 	router := gin.Default()
 
 	router.LoadHTMLGlob("templates/*")
@@ -20,9 +24,8 @@ func Router(version string, routingServiceURL string, port string) {
 	router.GET("/getAlbumList", getAlbums.GetAlbums)
 	router.GET("/getAlbumAtPosition/:position", getAlbumByID.GetAlbumByID)
 
-	router.Run("localhost:8080")
-
-	err := router.Run(routingServiceURL + port)
+	URL_PORT := routingServiceURL + port
+	err := router.Run(URL_PORT)
 	if err != nil {
 		panic("[Error] failed to start Gin server due to: " + err.Error())
 		return

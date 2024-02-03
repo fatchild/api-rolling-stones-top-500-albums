@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Go Auto Tester
+# Using polls the whole project for changes and runs tests if a file has changed
+
+MD5_OLD=''
+while [ 1 ]
+do
+	MD5_NEW=`ls -lR -time | md5sum`
+	if [ "$MD5_OLD" != "$MD5_NEW" ]
+	then
+		go test ./...
+		date=`date`
+		echo "Automatic testing completed. " $date
+	fi
+	MD5_OLD=$MD5_NEW
+	sleep 1
+done
