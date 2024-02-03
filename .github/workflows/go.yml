@@ -24,5 +24,14 @@ jobs:
     - name: Build
       run: go build -v ./...
 
+    - name: 'Create env file'
+      run: |
+        touch .env
+        echo URL=localhost >> .env
+        echo PORT=':8080' >> .env
+        echo LOG_TO_FILE=TRUE >> .env
+        echo RELEASE_MODE=TEST >> .env
+        cat .env
+
     - name: Test
       run: go test -v ./...
