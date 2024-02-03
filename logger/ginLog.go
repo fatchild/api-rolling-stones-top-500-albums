@@ -1,14 +1,15 @@
 package logger
 
 import (
-	"github.com/gin-gonic/gin"
 	"io"
 	"os"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
-func GinLog(logToFile bool) {
-	if logToFile {
+func GinLog(logToFile string) {
+	if logToFile == "TRUE" {
 		gin.DisableConsoleColor()
 		dt := time.Now()
 		f, _ := os.Create("var/log/access_" + dt.Format("2006_01_02") + ".log")

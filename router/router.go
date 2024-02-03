@@ -8,8 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Router(version string, routingServiceURL string, port string, releaseMode bool) {
-	if releaseMode {
+func Router(version string, routingServiceURL string, port string, releaseMode string) {
+	if releaseMode == "PRODUCTION" {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
