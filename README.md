@@ -14,7 +14,16 @@
 
 `go test ./...`
 
-4. Run the project
+4. Add a `.env` file for test environment
+
+```
+URL=localhost
+PORT=':8080'
+LOG_TO_FILE=TRUE
+RELEASE_MODE=TEST
+```
+
+5. Run the project
 
 `go run .`
 
