@@ -23,7 +23,7 @@ func TestSmoke(t *testing.T) {
 	w := httptest.NewRecorder()
 	r.ServeHTTP(w, req)
 
-	t.Log(w.Body)
+	//t.Log(w.Body)
 
 	assert.Equal(t, http.StatusOK, w.Code)
 }
