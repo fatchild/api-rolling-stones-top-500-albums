@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for api-rolling-stones-top-500-albums on 2024-02-04T00:15:50Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'api-rolling-stones-top-500-albums'
+primary_region = 'lhr'
+
+[build]
+  builtin = "go"
+  builder = 'paketobuildpacks/builder:base'
+  buildpacks = ['gcr.io/paketo-buildpacks/go']
+
+  [build.args]
+    BP_KEEP_FILES = "albums_2024.json:templates/*:.env"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 1024
