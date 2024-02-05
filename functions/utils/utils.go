@@ -9,5 +9,6 @@ import (
 func RootDir() string {
 	_, b, _, _ := runtime.Caller(0)
 	d := path.Join(path.Dir(b))
+	// This seems a bit hacky, should I recursively move from current directory backwards until I find the project name? No sure what the best approach is. It seems totally dependant on environment.
 	return filepath.Dir(d + "/../../")
 }
