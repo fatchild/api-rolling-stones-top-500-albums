@@ -1,6 +1,7 @@
 package router
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/fatchild/api-rolling-stones-top-500-albums/functions/getAlbumByID"
@@ -14,20 +15,20 @@ func Router(version string, routingServiceURL string, port string, releaseMode s
 	}
 
 	router := gin.Default()
-
 	router.LoadHTMLGlob("templates/*")
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+		c.HTML(http.StatusOK, "index.html.tmpl", gin.H{
 			"version": version,
 		})
 	})
 	router.GET("/getAlbumList", getAlbums.GetAlbums)
 	router.GET("/getAlbumAtPosition/:position", getAlbumByID.GetAlbumByID)
 
-	URL_PORT := routingServiceURL + port
+	URL_PORT := routingServiceURL + ":" + port
 	err := router.Run(URL_PORT)
 	if err != nil {
 		panic("[Error] failed to start Gin server due to: " + err.Error())
 		return
 	}
+	log.Println("listening on", port)
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"embed"
 	"os"
 
 	"github.com/fatchild/api-rolling-stones-top-500-albums/environment"
@@ -11,6 +12,8 @@ import (
 const (
 	Version = "0.0.1-alpha"
 )
+
+var resources embed.FS
 
 func main() {
 	environment.Load("./")

@@ -28,7 +28,7 @@ jobs:
       run: |
         touch .env
         echo URL=localhost >> .env
-        echo PORT=':8080' >> .env
+        echo PORT='8080' >> .env
         echo LOG_TO_FILE=TRUE >> .env
         echo RELEASE_MODE=TEST >> .env
         cat .env
