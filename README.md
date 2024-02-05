@@ -20,7 +20,7 @@ Live instance version: 0.0.1-alpha - https://api-rolling-stones-top-500-albums.f
 
 ```
 URL=localhost
-PORT=':8080'
+PORT='8080'
 LOG_TO_FILE=TRUE
 RELEASE_MODE=TEST
 ```
