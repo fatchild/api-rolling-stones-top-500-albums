@@ -1,5 +1,7 @@
 # Rolling Stones Top 500 Albums API
 
+Live instance version: 0.0.1-alpha - https://api-rolling-stones-top-500-albums.fly.dev/
+
 ## Setup
 
 1. Clone the repo
