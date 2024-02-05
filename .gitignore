@@ -1,0 +1,6 @@
+.dockerignore
+.env
+*.swp
+api-rolling-stones-top-500-albums
+*.toml
+
