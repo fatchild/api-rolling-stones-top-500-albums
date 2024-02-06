@@ -25,6 +25,12 @@ LOG_TO_FILE=TRUE
 RELEASE_MODE=TEST
 ```
 
+- If you have a public facing url then add that to the `.env` file
+
+```
+PUBLIC_URL="https://api-rolling-stones-top-500-albums.fly.dev"
+```
+
 5. Run the project
 
 `go run .`
