@@ -9,7 +9,7 @@ do
 	MD5_NEW=`ls -lR -time | md5sum`
 	if [ "$MD5_OLD" != "$MD5_NEW" ]
 	then
-		go test ./...
+		go test $1
 		date=`date`
 		echo "Automatic testing completed. " $date
 	fi
