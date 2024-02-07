@@ -1,6 +1,7 @@
 package getAlbumByID
 
 import (
+	"database/sql"
 	"net/http"
 	"strconv"
 
@@ -8,7 +9,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetAlbumByID(c *gin.Context) {
+type Album struct {
+	Position int64
+	Album    string
+	Artist   string
+}
+
+func GetAlbumByIDJSON(c *gin.Context) {
 	obj := database.ParseAlbumsJSON()
 
 	idString := c.Param("position")
@@ -25,4 +32,19 @@ func GetAlbumByID(c *gin.Context) {
 		}
 	}
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+}
+
+func GetAlbumByID(c *gin.Context) {
+	var alb Album
+
+	idString := c.Param("position")
+
+	row := database.DB.QueryRow("SELECT * FROM 2024_albums WHERE ID = ?", idString)
+	if err := row.Scan(&alb.Position, &alb.Album, &alb.Artist); err != nil {
+		if err == sql.ErrNoRows {
+			c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+		}
+	} else {
+		c.IndentedJSON(http.StatusNotFound, alb)
+	}
 }

@@ -5,3 +5,5 @@
 api-rolling-stones-top-500-albums
 *.toml
 NOTES.md
+*access*
+*.log
