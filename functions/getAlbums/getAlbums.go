@@ -10,4 +10,6 @@ import (
 func GetAlbums(c *gin.Context) {
 	obj := database.ParseAlbumsJSON()
 	c.IndentedJSON(http.StatusOK, obj)
+
+	database.Connect()
 }
