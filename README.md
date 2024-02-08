@@ -45,14 +45,14 @@ PUBLIC_URL="https://api-rolling-stones-top-500-albums.fly.dev"
 ```json
 [
 {
-  "position": 1,
-  "album": "What's Going On",
-  "artist": "Marvin Gaye",
+  "Position": 1,
+  "Album": "What's Going On",
+  "Artist": "Marvin Gaye",
 },
 {
-  "position": 500,
-  "album": "Funeral",
-  "artist": "Arcade Fire",
+  "Position": 500,
+  "Album": "Funeral",
+  "Artist": "Arcade Fire",
 }
 ]
 ```
@@ -64,8 +64,8 @@ PUBLIC_URL="https://api-rolling-stones-top-500-albums.fly.dev"
 
 ```json
 {
-  "position": 7,
-  "artist": "Fleetwood Mac",
-  "album": "Rumours"
+  "Position": 7,
+  "Artist": "Fleetwood Mac",
+  "Album": "Rumours"
 }
 ```
