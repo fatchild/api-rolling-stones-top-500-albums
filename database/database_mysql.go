@@ -24,11 +24,12 @@ func Connect() {
 
 	// Capture connection properties.
 	cfg := mysql.Config{
-		User:   os.Getenv("DB_USER"),
-		Passwd: os.Getenv("DB_PASS"),
-		Net:    "tcp",
-		Addr:   os.Getenv("DB_URL") + ":" + os.Getenv("DB_PORT"),
-		DBName: "rs_top_500",
+		User:                 os.Getenv("DB_USER"),
+		Passwd:               os.Getenv("DB_PASS"),
+		Net:                  "tcp",
+		Addr:                 os.Getenv("DB_URL") + ":" + os.Getenv("DB_PORT"),
+		DBName:               "rs_top_500",
+		AllowNativePasswords: true,
 	}
 	// Get a database handle.
 	var err error

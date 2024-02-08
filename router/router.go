@@ -30,7 +30,9 @@ func Router(version string, routingServiceURL string, port string, releaseMode s
 			"url":     url,
 		})
 	})
+	//router.GET("/getAlbumList", getAlbums.GetAlbumsJSON)
 	router.GET("/getAlbumList", getAlbums.GetAlbums)
+	//router.GET("/getAlbumAtPosition/:position", getAlbumByID.GetAlbumByIDJSON)
 	router.GET("/getAlbumAtPosition/:position", getAlbumByID.GetAlbumByID)
 
 	err := router.Run(URL_PORT)
