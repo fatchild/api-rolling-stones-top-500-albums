@@ -7,7 +7,7 @@ import (
 
 	"github.com/fatchild/api-rolling-stones-top-500-albums/functions/getAlbums"
 	"github.com/gin-gonic/gin"
-	"github.com/stretchr/testify/assert"
+	"github.com/go-playground/assert/v2"
 )
 
 func SetUpRouter() *gin.Engine {
@@ -22,8 +22,6 @@ func TestSmoke(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/getAlbumList", nil)
 	w := httptest.NewRecorder()
 	r.ServeHTTP(w, req)
-
-	//t.Log(w.Body)
 
 	assert.Equal(t, http.StatusOK, w.Code)
 }
