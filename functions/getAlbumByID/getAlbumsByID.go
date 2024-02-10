@@ -18,15 +18,15 @@ type Album struct {
 func GetAlbumByIDJSON(c *gin.Context) {
 	obj := database.ParseAlbumsJSON()
 
-	idString := c.Param("position")
-
-	id, err := strconv.Atoi(idString)
-	if err != nil {
-		panic(err)
+	posString, posGiven := c.GetQuery("position")
+	pos, err := strconv.Atoi(posString)
+	if err != nil || !posGiven {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "position not valid. Number between 1 and 500 inclusive."})
+		return
 	}
 
 	for _, a := range obj {
-		if a.Position == id {
+		if a.Position == pos {
 			c.IndentedJSON(http.StatusOK, a)
 			return
 		}
@@ -37,10 +37,25 @@ func GetAlbumByIDJSON(c *gin.Context) {
 func GetAlbumByID(c *gin.Context) {
 	var alb Album
 
-	idString := c.Param("position")
+	posString, posGiven := c.GetQuery("position")
+	pos, err := strconv.Atoi(posString)
+	if err != nil || !posGiven || pos < 1 || pos > 500 {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "position not valid. Number between 1 and 500 inclusive."})
+		return
+	}
 
-	row := database.DB.QueryRow("SELECT * FROM 2024_albums WHERE ID = ?", idString)
-	if err := row.Scan(&alb.Position, &alb.Album, &alb.Artist); err != nil {
+	yearString := "2023"
+	yearQuery, yearGiven := c.GetQuery("year")
+	if yearGiven && (yearQuery == "2023" || yearQuery == "2020" || yearQuery == "2012" || yearQuery == "2003") {
+		yearString = yearQuery
+	} else {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "year not valid. Valid years are 2003, 2012, 2020 & 2023."})
+		return
+	}
+
+	queryString := "SELECT * FROM " + yearString + "_albums WHERE ID = ?"
+	row := database.DB.QueryRow(queryString, pos)
+	if err := row.Scan(&alb.Position, &alb.Artist, &alb.Album); err != nil {
 		if err == sql.ErrNoRows {
 			c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
 		}

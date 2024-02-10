@@ -37,10 +37,10 @@ PUBLIC_URL="https://api-rolling-stones-top-500-albums.fly.dev"
 
 ## API
 
-> Get all albums on the list (2024)
+> Get all albums on the list (2023)
 > The API call returns the list of albums
 
-`curl http://localhost:8080/getAlbumList`
+`curl http://localhost:8080/getAlbumList?year=2023`
 
 ```json
 [
@@ -57,10 +57,10 @@ PUBLIC_URL="https://api-rolling-stones-top-500-albums.fly.dev"
 ]
 ```
 
-> Get a specific album in the list (2024) from it's position
+> Get a specific album in the list (2023) from it's position
 > The API call returns a single album
 
-`curl http://localhost:8080/getAlbumAtPosition/7`
+`curl http://localhost:8080/getAlbumAtPosition?position=7&year=2023`
 
 ```json
 {

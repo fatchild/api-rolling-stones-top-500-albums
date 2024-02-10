@@ -22,7 +22,17 @@ func GetAlbumsJSON(c *gin.Context) {
 func GetAlbums(c *gin.Context) {
 	var albums []Album
 
-	rows, err := database.DB.Query("SELECT * FROM 2024_albums")
+	yearString := "2023"
+	yearQuery, yearGiven := c.GetQuery("year")
+	if yearGiven && (yearQuery == "2023" || yearQuery == "2020" || yearQuery == "2012" || yearQuery == "2003") {
+		yearString = yearQuery
+	} else {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "year not valid. Valid years are 2003, 2012, 2020 & 2023."})
+		return
+	}
+
+	queryString := "SELECT * FROM " + yearString + "_albums"
+	rows, err := database.DB.Query(queryString)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -30,7 +40,7 @@ func GetAlbums(c *gin.Context) {
 	// Loop through rows, using Scan to assign column data to struct fields.
 	for rows.Next() {
 		var alb Album
-		if err := rows.Scan(&alb.Position, &alb.Album, &alb.Artist); err != nil {
+		if err := rows.Scan(&alb.Position, &alb.Artist, &alb.Album); err != nil {
 			log.Fatal(err)
 		}
 		albums = append(albums, alb)

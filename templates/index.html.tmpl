@@ -18,9 +18,9 @@
 
 	<div class="d-flex justify-content-center m-5 pt-5 flex- text-start flex-nowrap m-auto" style="max-width: 45rem;">
 		<div class="row bg-dark rounded p-4 text-success shadow text-start">
-			<p>// Get all albums on the 2024 list</br>
+			<p>// Get all albums on the 2023 list</br>
 			// The API call returns the list of albums</p>
-			<a href="{{ .url }}/getAlbumList" style="color: #d63384;"><code>curl {{ .url }}/getAlbumList</code></a>
+			<a href="{{ .url }}/getAlbumList?year=2023" style="color: #d63384;"><code>curl {{ .url }}/getAlbumList?year=2023</code></a>
 			<pre><code class="text-info">
 [
 	{
@@ -40,9 +40,9 @@
 
 	<div class="d-flex justify-content-center m-5 pt-5 flex- text-start flex-nowrap m-auto" style="max-width: 45rem;">
 		<div class="row bg-dark rounded p-4 text-success shadow text-start">
-			<p>// Get a specific album in the 2024 list from it's position</br>
+			<p>// Get a specific album in the 2023 list from it's position</br>
 			// The API call returns a single album</p>
-			<a href="{{ .url }}/getAlbumAtPosition/7" style="color: #d63384;"><code>curl {{ .url }}/getAlbumAtPosition/7</code></a>
+			<a href="{{ .url }}/getAlbumAtPosition?position=7&year=2023" style="color: #d63384;"><code>curl {{ .url }}/getAlbumAtPosition?position=7&year=2023</code></a>
 			<pre><code class="text-info">
 {
 	"Position": 7,
