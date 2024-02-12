@@ -1,39 +1,45 @@
 package database
 
 import (
-	"encoding/json"
+	"database/sql"
 	"fmt"
+	"log"
 	"os"
 
-	"github.com/fatchild/api-rolling-stones-top-500-albums/functions/utils"
+	"github.com/go-sql-driver/mysql"
 )
 
-type albums struct {
-	Position int    `json:"position"`
-	Artist   string `json:"artist"`
-	Album    string `json:"album"`
+type Album struct {
+	ID     int64
+	Title  string
+	Artist string
+	Price  float32
 }
 
-type albumsList []albums
+var DB *sql.DB
 
-func ParseAlbumsJSON() (obj albumsList) {
-	databaseFile := "albums_2024.json"
+func Connect() {
+	fmt.Println("Starting the db connection...")
 
-	fmt.Println(utils.RootDir() + "/" + databaseFile)
-	data, err := os.ReadFile(databaseFile)
+	// Capture connection properties.
+	cfg := mysql.Config{
+		User:                 os.Getenv("DB_USER"),
+		Passwd:               os.Getenv("DB_PASS"),
+		Net:                  "tcp",
+		Addr:                 os.Getenv("DB_URL") + ":" + os.Getenv("DB_PORT"),
+		DBName:               "rs_top_500",
+		AllowNativePasswords: true,
+	}
+	// Get a database handle.
+	var err error
+	DB, err = sql.Open("mysql", cfg.FormatDSN())
 	if err != nil {
-		fmt.Print(err)
-		fmt.Print("Check for the file in the root (with respect to utils")
-		data, err = os.ReadFile(utils.RootDir() + "/" + databaseFile)
-		if err != nil {
-			fmt.Println(err)
-		}
+		log.Fatal(err)
 	}
 
-	err = json.Unmarshal(data, &obj)
-	if err != nil {
-		fmt.Println("error:", err)
+	pingErr := DB.Ping()
+	if pingErr != nil {
+		log.Fatal(pingErr)
 	}
-
-	return obj
+	fmt.Println("Connected!")
 }

@@ -1,4 +1,4 @@
-package getAlbums
+package requests
 
 import (
 	"testing"
@@ -6,6 +6,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetAlbumList(t *testing.T) {
+func TestGetAlbumAtPosition(t *testing.T) {
 	assert.Equal(t, 1, 1)
 }
