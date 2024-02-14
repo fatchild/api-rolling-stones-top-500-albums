@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"os"
 	"path"
 	"path/filepath"
 	"runtime"
@@ -20,4 +21,22 @@ func StringIn(str string, list []string) bool {
 		}
 	}
 	return false
+}
+
+func CreateDirectory(path string) error {
+	_, err := os.Stat(path)
+	if err == nil {
+		return nil
+	}
+	if os.IsNotExist(err) {
+		err = CreateDirectory(filepath.Dir(path))
+		if err != nil {
+			return err
+		}
+		err = os.Mkdir(path, 0777)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
