@@ -12,7 +12,7 @@ import (
 func GetAlbums(c *gin.Context) {
 	var albums []Album
 
-	yearString := utils.SanitiseYear(c.GetQuery("year"))
+	yearString := utils.SanitiseYearParam(c.GetQuery("year"))
 
 	queryString := "SELECT * FROM " + yearString + "_albums"
 	rows, err := database.DB.Query(queryString)

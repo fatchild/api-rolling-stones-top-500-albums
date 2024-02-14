@@ -6,23 +6,23 @@ import (
 	"github.com/fatchild/api-rolling-stones-top-500-albums/functions/consts"
 )
 
-func SanitiseYear(yearString string, yearGiven bool) string {
+func SanitiseYearParam(yearString string, yearGiven bool) string {
 	yearSanitised := consts.VALID_YEAR_2023
 
-	if yearGiven && (yearString == "2023" || yearString == "2020" || yearString == "2012" || yearString == "2003") {
+	if yearGiven && StringIn(yearString, consts.VALID_YEARS) {
 		yearSanitised = yearString
 	}
 
 	return yearSanitised
 }
 
-func SanitisePosition(posString string, posGiven bool) string {
-	posSanitised := 1
+func SanitisePositionParam(posString string, posGiven bool) string {
+	posSanitized := "1"
 
-	posString, err := strconv.Atoi(posInt)
-	if err == nil && posGiven && posInt > 1 && posInt < 500 {
-		posSanitised = posString
+	posInt, err := strconv.Atoi(posString)
+	if err == nil && posGiven && (posInt >= 1 && posInt <= 500) {
+		posSanitized = posString
 	}
 
-	return posSanitised
+	return posSanitized
 }
